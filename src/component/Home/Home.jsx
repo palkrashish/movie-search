@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-import Header from "../Header/Header";
 import Search from "../Search/Search";
 import MovieList from "../../movie-List/MovieList";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,11 +38,10 @@ const Home = () => {
   // }
   return (
     <div>
-      <Header />
       <div className="main-content">
         <Search handleSearch={handleSearch} />
-        {isLoading && <p>Loading...</p>}
-        {errorMsg && <p>{errorMsg} </p>}
+        {isLoading && <p className="loading" >Loading...</p>}
+        {errorMsg && <p className="error-msg" >{errorMsg} </p>}
         {movies.length > 0 && <MovieList movies={movies} />}
       </div>
     </div>
