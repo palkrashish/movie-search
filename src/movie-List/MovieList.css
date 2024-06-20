@@ -1,4 +1,24 @@
-.movie-list{
-    display: flex;
-    flex-wrap: wrap;
+.movie-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style-type: none;
+  gap: 2rem;
+  padding: 0px;
+  margin: 0px;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+.movie-list .movie {
+  width: 250px;
+  min-height: 250px;
+}
+.movie-list .movie_info{
+
+    margin-top: 1rem;
+}
+
+.movie-list .movie-image{
+    width: 250px;
+    height: 250px;
 }

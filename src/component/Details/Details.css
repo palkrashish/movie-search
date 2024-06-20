@@ -1,0 +1,15 @@
+.movies-detials {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.movies-detials .movie-details-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.movies-detials .movie-details-info .img{
+width: 750px;
+height: 300px;
+}
