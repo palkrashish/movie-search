@@ -1,18 +1,17 @@
-
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background-color: #e4cdcd
+  background-color: rgb(180, 166, 166);
 }
 
- .main-content{
+.main-content {
   max-width: 1200px;
   margin: 0 auto;
   text-align: center;
 }
 
-.loading .error-msg{
+.loading .error-msg {
   text-align: center;
   font-size: 18px;
   letter-spacing: 1px;
