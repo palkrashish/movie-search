@@ -17,9 +17,9 @@ const Home = () => {
     searchRef.current = debounce(searchMovies, 1000);
   }, []);
 
-  function searchMovies() {
+  function searchMovies(value) {
     //Make an API Call
-    dispatch(getMovies());
+    dispatch(getMovies(value));
   }
 
   const dispatch = useDispatch();
@@ -29,7 +29,7 @@ const Home = () => {
       searchRef.current(searchTerm);
     }
   };
-  console.log("movies", movies);
+  // console.log("movies", movies);
   // if (isLoading) {
   //   return <p>Loading...</p>;
   // }
