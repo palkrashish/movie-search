@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getMoviesDetails } from "../../redux/features/detailsSlice";
+import { getMoviesDetails, getMoviesCredits } from "../../redux/features/detailsSlice";
 import "./Details.css";
 
 const Details = () => {
-  const { isLoading, errorMsg, details } = useSelector(
+  const { isLoading, errorMsg, details,credits } = useSelector(
     (state) => state.details
   );
 
@@ -14,11 +14,12 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(getMoviesDetails(id));
+    dispatch(getMoviesCredits(id));
   }, [id]);
-
+  console.log('Credits', credits)
     
   const { title, poster_path, release_date, vote_average, overview } = details;
-
+  
   return (
     <div className="movies-detials">
       {isLoading && <p className="loading">Loading...</p>}
@@ -29,8 +30,8 @@ const Details = () => {
           alt={title}
           className="img"
         />
-       <div> <h5> {title} </h5>
-       <div><b>Release Date:- </b> {release_date}</div>
+       <div className="extra-detials" > <h5> {title} </h5>
+       <div> <span><b>Release Date:- </b></span> {release_date}</div>
        <div><b>Rating:- </b> {vote_average}</div>
        <div><b>Description:- </b> {overview}</div>
        </div>
