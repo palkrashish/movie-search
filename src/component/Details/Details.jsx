@@ -1,11 +1,14 @@
 import React, { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getMoviesDetails, getMoviesCredits } from "../../redux/features/detailsSlice";
+import {
+  getMoviesDetails,
+  getMoviesCredits,
+} from "../../redux/features/detailsSlice";
 import "./Details.css";
 
 const Details = () => {
-  const { isLoading, errorMsg, details,credits } = useSelector(
+  const { isLoading, errorMsg, details, credits } = useSelector(
     (state) => state.details
   );
 
@@ -16,10 +19,11 @@ const Details = () => {
     dispatch(getMoviesDetails(id));
     dispatch(getMoviesCredits(id));
   }, [id]);
-  console.log('Credits', credits)
-    
+  // console.log("Credits", credits);
+
+  const { cast, producers, directors } = credits;
   const { title, poster_path, release_date, vote_average, overview } = details;
-  
+
   return (
     <div className="movies-detials">
       {isLoading && <p className="loading">Loading...</p>}
@@ -30,11 +34,32 @@ const Details = () => {
           alt={title}
           className="img"
         />
-       <div className="extra-detials" > <h5> {title} </h5>
-       <div> <span><b>Release Date:- </b></span> {release_date}</div>
-       <div><b>Rating:- </b> {vote_average}</div>
-       <div><b>Description:- </b> {overview}</div>
-       </div>
+        <div className="extra-detials">
+          {" "}
+          <h5> {title} </h5>
+          <div>
+            {" "}
+            <span>
+              <b>Release Date:- </b>
+            </span>{" "}
+            {release_date}
+          </div>
+          <div>
+            <b>Rating:- </b> {vote_average}
+          </div>
+          <div>
+            <b>Description:- </b> {overview}
+          </div>
+          <div>
+          <span><b>Cast:- </b> {cast} </span>
+          </div>
+          <div>
+          <span><b>Producer:- </b> {producers} </span>
+          </div>
+          <div>
+          <span><b>Directors:- </b> {directors} </span>
+          </div>
+        </div>
       </div>
     </div>
   );
