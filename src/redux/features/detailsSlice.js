@@ -1,19 +1,22 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
-import { BASE_API_URL } from '../../utils/constants'
+import { BASE_API_URL } from "../../utils/constants";
 export const getMoviesDetails = createAsyncThunk("details", async (id) => {
-  try {
-    const { data } = await axios.get(
-      '/details.json'
-    //   `${BASE_API_URL}/movie/?268?api_key=${
-    //     import.meta.env.VITE_MOVIE_API_KEY
-    //   }`
-    );
-    return data;
-  } catch (error) {
-    console.log("error",error)
-  }
+  const { data } = await axios.get(
+    // '/details.json'
+    `${BASE_API_URL}/movie/${id}?api_key=${import.meta.env.VITE_MOVIE_API_KEY}`
+  );
+  return data;
 });
+
+export const getMoviesCredits = createAsyncThunk("credits", async (id) => {
+  const { data } = await axios.get(
+    // '/details.json'
+    `${BASE_API_URL}/movie/${id}/credits?api_key=${import.meta.env.VITE_MOVIE_API_KEY}`
+  );
+  return data;
+});
+
 
 const detailsSlice = createSlice({
   name: "details",
@@ -21,6 +24,7 @@ const detailsSlice = createSlice({
     isLoading: false,
     errorMsg: "",
     details: [],
+    credits: [],
   },
 
   extraReducers: (builder) => {
@@ -35,8 +39,23 @@ const detailsSlice = createSlice({
       }),
       builder.addCase(getMoviesDetails.rejected, (state) => {
         state.isLoading = false;
-        state.errorMsg ="Error while getting movie information... Kindly try again later";
-      });
+        state.errorMsg =
+          "Error while getting movie information. Kindly try again later...";
+      }),
+      builder.addCase(getMoviesCredits.pending, (state) => {
+        state.isLoading = true;
+        state.errorMsg = "";
+      }),
+        builder.addCase(getMoviesCredits.fulfilled, (state, action) => {
+          state.isLoading = false;
+          state.errorMsg = "";
+          state.credits = action.payload;
+        }),
+        builder.addCase(getMoviesCredits.rejected, (state) => {
+          state.isLoading = false;
+          state.errorMsg =
+            "Error while getting movie credit. Kindly try again later...";
+        })
   },
 });
 

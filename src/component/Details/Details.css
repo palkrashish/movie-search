@@ -8,8 +8,13 @@
   justify-content: space-between;
   gap: 2rem;
 }
+.movies-detials .movie-details-info .extra-details > * {
+margin: 2rem;
+}
+
 
 .movies-detials .movie-details-info .img{
 width: 750px;
 height: 300px;
 }
+
