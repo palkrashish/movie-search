@@ -25,6 +25,8 @@ This React-based Movie Search App allows users to seamlessly search for and expl
 
 
 https://ashish-movie-search.netlify.app/
+![movie](https://github.com/palkrashish/movie-search/assets/74855648/e89b2efb-f84f-4f81-9702-77a2a95171cf)
+
 
 
 ## Movie - Search App
