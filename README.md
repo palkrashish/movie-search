@@ -54,6 +54,6 @@ The app should utilise routing to display different views/pages for search resul
 - Handling API requests and responses appropriately (e.g., loading, state, error handling).
 
 5. Design and UI:
--Create a clean and user-friendly interface for both search results and movie details.
+- Create a clean and user-friendly interface for both search results and movie details.
 
 
